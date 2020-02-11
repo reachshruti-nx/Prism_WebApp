@@ -16,6 +16,15 @@ module.exports = {
         loader: 'style-loader!css-loader'
       },
       {
+        test: /\.s?less$/i,
+        exclude:'/node_modules/',
+        use: [
+          'style-loader',
+          'css-loader',
+          'less-loader'
+        ]
+      },
+      {
         test: /\.js?$/,
         exclude: /(node_modules|bower_components)/,
         loader: 'babel-loader',
@@ -33,7 +42,7 @@ module.exports = {
   //       cacheId: 'sw-pwa-cache',
   //       filename: 'service-worker.js',
   //       staticFileGlobs: [
-  //         './static/style.css',
+  //         './static/style.less',
   //         './index.html',
   //         './images/**.*'
   //       ],

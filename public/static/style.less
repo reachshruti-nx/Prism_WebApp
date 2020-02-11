@@ -1,0 +1,130 @@
+@import '~antd/dist/antd.css';
+
+body {
+  font-family: sans-serif;
+}
+.login-container {
+  padding : 20px;
+  .login-description {
+    text-align: center;
+    font-size: 18px;
+    padding: 10px;
+  }
+  input {
+    margin: 10px;
+    width: calc(100% - 20px);
+  }
+  .login-button {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+  }
+}
+/* Generic styles */
+button {
+  background-color: #22a5f7 !important;
+}
+/* End of generic styles */
+
+/* Already written CSS */
+.container {
+  max-width: 920px;
+}
+
+.nav-parent {
+  display: flex;
+  text-align: center;
+  background: rgba(168, 239, 227, 0.8);
+}
+
+.nav-parent > .nav-child {
+  padding: 1rem;
+  border: 1px solid #72ebec;
+}
+
+@media only screen and (max-width: 768px) {
+  .container {
+    margin: 0 auto;
+  }
+
+  .nav-parent {
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+
+  .nav-parent > .nav-child {
+    cursor: pointer;
+    padding: 0.2rem;
+  }
+
+}
+
+@media only screen and (min-width: 769px) {
+  .container {
+    margin: 1.5rem auto;
+  }
+
+  .nav-parent {
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+
+  .nav-parent > .nav-child {
+    width: 34%;
+    justify-content: space-between;
+    padding: 0.4rem;
+  }
+
+}
+
+.site-header,
+.content,
+.site-footer {
+  background-color: #99e6ff;
+}
+
+.content {
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+}
+
+.site-sidebar {
+  border: 2px solid #b3ffb3;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.padding-one {
+  padding: 1rem;
+}
+
+.posts {
+  padding: 1rem;
+}
+
+
+.navigation-wr {
+  margin-top: 1.5rem;
+}
+
+.proj-data-row {
+  width: 100%;
+  clear: both;
+  overflow: hidden;
+}
+
+.proj-data-row > .proj-data-col-left {
+  width: 20%;
+  float: left;
+  padding: 0.3rem 0.5rem;
+}
+
+.proj-data-row > .proj-data-col-right {
+  width: 80%;
+  float: left;
+  padding: 0.3rem 0.5rem;
+}
+

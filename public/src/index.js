@@ -1,4 +1,4 @@
-require('../static/style.css');
+require('../static/style.less');
 (function () {
   console.log('Registering serviceWorker');
   // if ('serviceWorker' in navigator) {
