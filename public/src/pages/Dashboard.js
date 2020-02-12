@@ -1,12 +1,14 @@
 import React from 'react';
-// import {hashHistory} from 'react-router';
-
+import Header from '../components/Header.js';
 export default class Dashboard extends React.Component {
 
   render () {
     return (
       <div>
-        I am dashboard
+        <Header/>
+        <div>
+          I am dashboard
+        </div>
       </div>
     );
   }
