@@ -49,15 +49,22 @@ export default class Header extends React.Component {
     return (
       <div>
         <Drawer
-          title="What to call this ??"
+          title="Prism"
           placement="left"
           visible={ this.state.menuVisible }
           closable={ false }
           onClose={ this.onClose }
         >
-          <div class="menu-item" onClick={this.openTasksPage} > Tasks </div>
-          <div class="menu-item" onClick={this.openAlertsPage} > Alerts </div>
-          <div class="menu-item" onClick={this.openDashboardPage} > Dashboard </div>
+          <div class="menu-item" onClick={this.openTasksPage} >
+            <img src="https://cdn4.iconfinder.com/data/icons/materia-flat-office-vol-1/24/010_003_task_clip_board_clipboard_buffer_report-512.png" />
+            Tasks
+           </div>
+          <div class="menu-item" onClick={this.openAlertsPage} >
+             <img src="https://cdn4.iconfinder.com/data/icons/alphabet-3/500/Alert_exclamation_exclamation_mark_mark-512.png" />
+            Alerts </div>
+          <div class="menu-item" onClick={this.openDashboardPage} >
+            <img src="https://cdn2.iconfinder.com/data/icons/thin-charts-analytics/24/thin-1078_kpi_dashboard_report-512.png" />
+            Dashboard </div>
         </Drawer>
         <div class="header-container">
           <Icon type="menu" onClick={this.showDrawer} />
