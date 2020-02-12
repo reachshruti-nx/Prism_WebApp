@@ -18,7 +18,7 @@
 'use strict';
 let deferredInstallPrompt = null;
 const installButton = document.getElementById('butInstall');
-installButton.addEventListener('click', installPWA);
+//installButton.addEventListener('click', installPWA);
 // CODELAB: Add event listener for beforeinstallprompt event
 window.addEventListener('beforeinstallprompt', saveBeforeInstallPromptEvent);
 /**
@@ -41,7 +41,7 @@ function installPWA(evt) {
   // CODELAB: Add code show install prompt & hide the install button.
   deferredInstallPrompt.prompt();
   evt.srcElement.setAttribute('hidden', true);
-  // CODELAB: Log user response to prompt.
+  // CODELAB: Log user respoçnse to prompt.
   deferredInstallPrompt.userChoice.then(choice => {
     if(choice.outcome === 'accepted') {
       console.log('User accepted the A2HS prompt', choice);
