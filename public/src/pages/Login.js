@@ -3,6 +3,7 @@ import { Input, Button } from 'antd';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import {hashHistory} from 'react-router';
+import { extractGroupResults } from '../utils/utils.js';
 class Login extends React.Component {
 
   constructor(props) {
@@ -53,7 +54,7 @@ class Login extends React.Component {
     .then((response) => {
       this.props.dispatch ({
         type: 'SET_CLUSTER_DETAILS',
-        response: response.data.group_results
+        response: extractGroupResults(response.data)
       });
       hashHistory.push("/dashboard");
     })
