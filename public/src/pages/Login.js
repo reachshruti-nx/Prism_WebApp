@@ -66,20 +66,37 @@ class Login extends React.Component {
   render () {
     return (
       <div class="login-container">
-        <div class="login-description">
-          Use your Nutanix username and password to log in to Prism
+        <div style={{ "textAlign": "center", "marginBottom": "50px" }}>
+          <img src="/images/n-logo-white.png" alt="Nutanix Logo" />
         </div>
-        <Input id="pcip" placeholder="Enter PC IP" />
-        <Input id="username" placeholder="Enter username" />
-        <Input id="password" placeholder="Enter password" />
+        <div id="pcip" class="form__group field">
+          <input type="input" class="form__field" placeholder="PC IP" name="pcip" required />
+          <label for="name" class="form__label">PC IP</label>
+        </div>
+        <div class="form__group field">
+          <input id="username" type="input" class="form__field" placeholder="Username" name="username" required />
+          <label for="name" class="form__label">Username</label>
+        </div>
+        <div class="form__group field">
+          <input id="password" type="input" class="form__field" placeholder="Password" name="password" required />
+          <label for="name" class="form__label">Password</label>
+        </div>
         <div>
-          <Button 
+          <Button
             class="login-button"
             type="primary"
             disabled= {this.state.loginDisabled}
             onClick={() => this.login()}>
             Sign In
           </Button>
+        </div>
+          <div class="footer" style={{ "color":"#fff" }}>
+          <h5 style={{ "color": "#5a5ade", "fontWeight": "600" }}>
+            Powered by:
+          </h5>
+          <div>
+            <img src="/images/ntnx.png" alt="Nutanix Logo" />
+          </div>
         </div>
       </div>
     );
