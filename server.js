@@ -51,11 +51,12 @@ function startServer() {
   const app = express();
   const port = 8000;
 
-  app.use(bodyParser.json());
+  // app.use(bodyParser.json());
   // app.use(poller);
 
   // Redirect HTTP to HTTPS,
    app.use(redirectToHTTPS([/localhost:(\d{4})/], [], 301));
+
    app.use(
     '/api',
     proxy({ target: 'https://'+PC_IP,
