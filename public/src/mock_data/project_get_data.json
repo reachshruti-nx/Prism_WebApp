@@ -1,7 +1,0 @@
-{
-  "name": "Unification of Common Scripts",
-  "owner": "john.jackson@nutanix.com",
-  "sponser": "visaa@nutanix.com",
-  "description": "Project Unification. Aims to specify single layer of contract to UI to communicate with backend",
-  "members": ["amit.sarangi@nutanix.com", "ishant.oberoi@nutanix.com"]
-}
