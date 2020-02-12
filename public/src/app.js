@@ -10,8 +10,7 @@ const app = document.getElementById('app');
 ReactDOM.render(
   <Provider store={store}>
     <Router history={ hashHistory }>
-      <Route path="/" component={ Login }>
-        <Route path="login" component={ Login }/>
-      </Route>
+      <Route path="/login" component={ Login }/>
+      <Route path="/" component={ LandingPage }/>
     </Router>
   </Provider>, app);

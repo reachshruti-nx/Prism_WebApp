@@ -1,9 +1,9 @@
 import React from 'react';
 import { Carousel, Button } from 'antd';
-
+import {hashHistory} from 'react-router';
 export default class LandingPage extends React.Component {
   getStarted = () => {
-    // TO DO : Go to login page
+    hashHistory.push("/login");
     console.log("I am in get started");
   }
 

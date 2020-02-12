@@ -28,7 +28,6 @@
     "babel-preset-stage-0": "^6.5.0",
     "classnames": "^2.2.5",
     "css-loader": "^0.28.4",
-    "history": "^1.17.0",
     "immutable": "^3.8.1",
     "less": "^3.11.1",
     "less-loader": "^5.0.0",
