@@ -3,7 +3,7 @@ var path = require('path');
 var SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 console.log('__dirname', __dirname);
 module.exports = {
-  entry: './src/index.js',
+  entry: ["babel-polyfill", './src/index.js'],
   output: {
     path: path.resolve(__dirname, './'),
     filename: 'bundle.js',
@@ -31,7 +31,7 @@ module.exports = {
         query: {
           presets: ['react', 'es2015', 'stage-0'],
           plugins: ['react-html-attrs', 'transform-class-properties',
-            'transform-decorators-legacy']
+            'transform-decorators-legacy', 'transform-runtime']
         }
       }
     ]
