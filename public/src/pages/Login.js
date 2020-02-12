@@ -75,7 +75,7 @@ class Login extends React.Component {
           <input id="username" type="input" class="" placeholder="Username" name="username" required />
         </div>
         <div class="field">
-          <input id="password" type="input" class="" placeholder="Password" name="password" required />
+          <input id="password" type="password" class="" placeholder="Password" name="password" required />
         </div>
         <div class="field">
           <Button

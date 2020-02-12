@@ -14,7 +14,7 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={ hashHistory }>
       <Route path="/login" component={ Login }/>
-      <Route path="/dashboard" component={ Dashboard }/>
+      <Route path="/dashboard" component={ Alerts }/>
       <Route path="/tasks" component={ Tasks }/>
       <Route path="/alerts" component={ Alerts }/>
       <Route path="/" component={ LandingPage }/>
