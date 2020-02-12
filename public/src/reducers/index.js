@@ -1,7 +1,9 @@
 import {combineReducers} from 'redux';
 
-import loginReducer from './LoginReducer';
+import loginReducer from './loginReducer';
+import clusterReducer from './clusterReducer';
 
 export default combineReducers({
-  loginReducer
+  loginReducer,
+  clusterReducer
 });

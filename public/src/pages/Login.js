@@ -2,7 +2,7 @@ import React from 'react';
 import { Input, Button } from 'antd';
 import axios from 'axios';
 import { connect } from 'react-redux';
-
+import {hashHistory} from 'react-router';
 class Login extends React.Component {
 
   constructor(props) {
@@ -51,13 +51,11 @@ class Login extends React.Component {
       }
     })
     .then((response) => {
-      console.log("I am in success");
-      console.log(response);
       this.props.dispatch ({
         type: 'SET_CLUSTER_DETAILS',
         response: response.data.group_results
       });
-      // TO DO : Navigate to dashboardreturn(<Redirect to='/dashboard' />);
+      hashHistory.push("/dashboard");
     })
     .catch((error) => {
       // TO DO : Show the message on UI
@@ -89,10 +87,7 @@ class Login extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  const ui = state.loginReducer;
-  return {
-    clusterDetails: ui.clusterDetails
-  }
+  return {}
 };
 
 const mapDispatchToProps = (dispatch) => ({

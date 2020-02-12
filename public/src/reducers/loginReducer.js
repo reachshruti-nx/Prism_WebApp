@@ -3,8 +3,7 @@ import Immutable from 'immutable';
 
 const initialState = {
   username: '',
-  password: '',
-  clusterDetails: null
+  password: ''
 };
 
 /**
@@ -21,10 +20,6 @@ export default function reducer (state = initialState, action) {
         .setIn(['username'], action.username)
         .setIn(['password'], action.password)
       break;
-    case 'SET_CLUSTER_DETAILS':
-      modifiedState = modifiedState
-          .setIn(['clusterDetails'], action.response)
-        break;
     default: break;
   }
 
