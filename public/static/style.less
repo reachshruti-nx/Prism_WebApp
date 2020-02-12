@@ -6,8 +6,8 @@
 @gray: #9b9b9b;
 
 body {
-  font-family: sans-serif;
-  background-color: #e5e6ea;
+  font-family: 'Open Sans', sans-serif;
+  /*background-color: #e5e6ea;*/
 }
 
 .menu-item {
@@ -15,13 +15,14 @@ body {
 }
 
 .landing-page-container {
-  background-color: #141430;
+  background: url('/images/bg.png');
+  background-size: cover;
   height: 100vh;
   color: white;
   .ant-carousel .slick-slide {
     text-align: center;
     height: calc(100vh - 100px);
-    line-height: calc(100vh - 100px);
+    /*line-height: calc(100vh - 100px);*/
     color: #fff;
     overflow: hidden;
   }
@@ -29,11 +30,31 @@ body {
     color: #fff;
   }
   .login-button {
-    margin-top: 20px;
+    margin: 20px auto;
     height: 40px;
-    width: 120px;
+    width: 85%;
     position: absolute;
-    right: 20px;
+    right: 0;
+    left: 0;
+    font-weight: 600;
+  }
+
+  .data {
+    img {
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    h3 {
+      margin-top: 30px;
+      font-size: 24px;
+    }
+
+    p {
+      font-size: 18px;
+      font-weight: 300;
+      margin: 0 10px;
+    }
   }
 }
 
@@ -134,18 +155,6 @@ body {
   }
 }
 
-.alerts-tasks-container {
-  .ant-card-bordered {
-    border-top: 1px solid #e8e8e8;
-  }
-  .ant-card-small {
-    font-size: 16px;
-  }
-  .ant-card-head-title {
-    font-weight: 600;
-  }
-}
-
 /* Generic styles */
 button {
   background-color: #22a5f7 !important;
@@ -153,8 +162,8 @@ button {
 /* End of generic styles */
 
 .footer {
-  position: relative;
-  top: 100px;
+  position: fixed;
+  bottom: 5%;
   text-align: center;
   width: 90%;
   margin: 0 auto;
