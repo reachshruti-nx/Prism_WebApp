@@ -30,6 +30,10 @@ export default class Header extends React.Component {
     hashHistory.push("/alerts");
   }
 
+  openDashboardPage = () => {
+    hashHistory.push("/dashboard");
+  }
+
   logOut = () => {
     hashHistory.push("/login");
   }
@@ -53,6 +57,7 @@ export default class Header extends React.Component {
         >
           <div class="menu-item" onClick={this.openTasksPage} > Tasks </div>
           <div class="menu-item" onClick={this.openAlertsPage} > Alerts </div>
+          <div class="menu-item" onClick={this.openDashboardPage} > Dashboard </div>
         </Drawer>
         <div class="header-container">
           <Icon type="menu" onClick={this.showDrawer} />
