@@ -3,8 +3,15 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import { extractGroupResults } from '../utils/utils.js';
 import Header from '../components/Header.js';
+import { Spin } from 'antd';
 class Alerts extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: true
+    };
+  }
   componentWillMount () {
     // Make API Call to fetch alerts using groups call
     const url = "/api/nutanix/v3/groups";
@@ -40,24 +47,29 @@ class Alerts extends React.Component {
         type: 'SET_ALERTS_DETAILS',
         response: extractGroupResults(response.data)
       });
+      this.setState({ loading: false });
     })
     .catch((error) => {
       // TO DO : Show the message on UI
       alert(error);
+      this.setState({ loading: false });
     });
   }
 
   render () {
     const { alerts } = this.props.alerts;
     return (
-      <div>
-        <Header/>
-        <div class="alerts-container">
-          { alerts.map(function(alert, index){
-            return <li key={ index }>{alert.title}</li>;
-          })}
+      <Spin size="large" spinning={this.state.loading}>
+        <div>
+          <Header/>
+          <div class="alerts-container">
+            { alerts.map(function(alert, index){
+              return <li key={ index }>{alert.title}</li>;
+            })}
+          </div>
         </div>
-      </div>
+      </Spin>
+    
     );
   }
 }

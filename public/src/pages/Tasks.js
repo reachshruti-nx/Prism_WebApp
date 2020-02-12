@@ -3,8 +3,14 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import { extractGroupResults } from '../utils/utils.js';
 import Header from '../components/Header.js';
-
+import { Spin } from 'antd';
 class Tasks extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: true
+    };
+  }
 
   componentWillMount () {
     // Make API Call to fetch alerts using groups call
@@ -34,24 +40,28 @@ class Tasks extends React.Component {
         type: 'SET_TASKS_DETAILS',
         response: extractGroupResults(response.data)
       });
+      this.setState({ loading: false });
     })
     .catch((error) => {
       // TO DO : Show the message on UI
       alert(error);
+      this.setState({ loading: false });
     });
   }
 
   render () {
     const { tasks } = this.props.tasks;
     return (
-      <div>
-        <Header/>
-        <div class="alerts-container">
-          { tasks.map(function(task, index){
-            return <li key={ index }>{task.display_name}</li>;
-          })}
+      <Spin size="large" spinning={this.state.loading}>
+        <div>
+          <Header/>
+          <div class="alerts-container">
+            { tasks.map(function(task, index){
+              return <li key={ index }>{task.display_name}</li>;
+            })}
+          </div>
         </div>
-      </div>
+      </Spin>
     );
   }
 }
