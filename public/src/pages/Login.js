@@ -1,7 +1,9 @@
 import React from 'react';
 import { Input, Button } from 'antd';
 import axios from 'axios';
-export default class Login extends React.Component {
+import { connect } from 'react-redux';
+
+class Login extends React.Component {
 
   constructor(props) {
     super(props);
@@ -14,6 +16,11 @@ export default class Login extends React.Component {
     this.setState({ loginDisabled:true });
     const username=document.getElementById('username').value;
     const password=document.getElementById('password').value;
+    this.props.dispatch ({
+      type: 'SET_LOGIN_DETAILS',
+      username,
+      password
+    });
     const url = "/api/nutanix/v3/groups";
     const query = {
       "entity_type":"cluster",
@@ -46,6 +53,11 @@ export default class Login extends React.Component {
     .then((response) => {
       console.log("I am in success");
       console.log(response);
+      this.props.dispatch ({
+        type: 'SET_CLUSTER_DETAILS',
+        response: response.data.group_results
+      });
+      // TO DO : Navigate to dashboardreturn(<Redirect to='/dashboard' />);
     })
     .catch((error) => {
       // TO DO : Show the message on UI
@@ -75,3 +87,16 @@ export default class Login extends React.Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  const ui = state.loginReducer;
+  return {
+    clusterDetails: ui.clusterDetails
+  }
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  dispatch
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

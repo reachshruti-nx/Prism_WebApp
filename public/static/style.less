@@ -3,6 +3,30 @@
 body {
   font-family: sans-serif;
 }
+
+.landing-page-container {
+  background-color: #141430;
+  height: 100vh;
+  color: white;
+  .ant-carousel .slick-slide {
+    text-align: center;
+    height: calc(100vh - 100px);
+    line-height: calc(100vh - 100px);
+    color: #fff;
+    overflow: hidden;
+  }
+  .ant-carousel .slick-slide h3 {
+    color: #fff;
+  }
+  .login-button {
+    margin-top: 20px;
+    height: 40px;
+    width: 120px;
+    position: absolute;
+    right: 20px;
+  }
+}
+
 .login-container {
   padding : 20px;
   .login-description {
@@ -21,6 +45,7 @@ body {
     height: 50px;
   }
 }
+
 /* Generic styles */
 button {
   background-color: #22a5f7 !important;
