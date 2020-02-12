@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import { extractGroupResults } from '../utils/utils.js';
 import Header from '../components/Header.js';
-import { Spin, Card } from 'antd';
+import { Spin, Collapse, Descriptions } from 'antd';
 class Tasks extends React.Component {
   constructor(props) {
     super(props);
@@ -25,7 +25,7 @@ class Tasks extends React.Component {
         "group_member_attributes":[
           {"attribute":"display_name"}, {"attribute":"percentage_complete"},
           {"attribute":"message"},{"attribute":"_created_timestamp_usecs_"},
-          {"attribute":"entity_list"}
+          {"attribute":"entity_list"},{"attribute":"status"}
         ]
     };
     axios.post(url,query, {
@@ -51,22 +51,37 @@ class Tasks extends React.Component {
 
   render () {
     const { tasks } = this.props.tasks;
+    const { Panel } = Collapse;
     return (
       <Spin size="large" spinning={this.state.loading}>
         <div>
           <Header/>
-          <div class="alerts-tasks-container">
-            { tasks.map(function(task){
-              // TO DO : compute the task title
+          <Collapse accordion expandIconPosition='right'>
+            { tasks.map(function(task,index){
+              // TO DO : compute the alert title
               const title = task.display_name;
+              let status = "-";
+              // Compute task status
+              if (task.status === "kSucceeded") {
+                status = "Succeeded";
+              } else if (task.status === "kRunning"){
+                status = "Running";
+              }
               return (
-                <Card size="small">
-                  <p>{ title }</p>
-                  {/* TO DO */}
-                  <a href="#">Click to know more</a>
-              </Card>);
+              <Panel header={ title } key={index}>
+                <Descriptions
+                  bordered
+                  column={{ xxl: 4, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }}
+                >
+                  <Descriptions.Item label="Percentage Completed">{ task.percentage_complete }</Descriptions.Item>
+                  <Descriptions.Item label="Status">{ status }</Descriptions.Item>
+                  {/* <Descriptions.Item label="Created Time">{ alert._created_timestamp_usecs_}</Descriptions.Item> */}
+                  {/* <Descriptions.Item label="Last occured Time">{ alert.last_occurred_timestamp_usecs}</Descriptions.Item> */}
+                </Descriptions>
+              </Panel>
+              );
             })}
-          </div>
+          </Collapse>
         </div>
       </Spin>
     );
