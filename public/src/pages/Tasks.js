@@ -9,7 +9,7 @@ class Tasks extends React.Component {
     // Make API Call to fetch alerts using groups call
     const url = "/api/nutanix/v3/groups";
     const query = {
-        "entity_type":"alert",
+        "entity_type":"alerts",
         "group_attributes":[],
         "group_member_count":40,
         "group_member_offset":0,
