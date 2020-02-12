@@ -2,8 +2,8 @@
 import Immutable from 'immutable';
 
 const initialState = {
-  username: '',
-  password: ''
+  username: "admin",
+  password: "Nutanix.123"
 };
 
 /**
