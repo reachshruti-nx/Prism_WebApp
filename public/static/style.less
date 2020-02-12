@@ -1,72 +1,18 @@
 @import '~antd/dist/antd.css';
 
+@primary: #3E4EB8;
+@secondary: #38ef7d;
+@white: #fff;
+@gray: #9b9b9b;
+
 body {
   font-family: sans-serif;
   background-color: #e5e6ea;
 }
 
-@primary: #3E4EB8;
-@secondary: #38ef7d;
-@white: #fff;
-@gray: #9b9b9b;
-.form__group {
-  position: relative;
-  padding: 10px 0 0;
-  width: 100%;
-  margin: 15px 0;
+.menu-item {
+  cursor: pointer;
 }
-
-.form__field {
-  font-family: inherit;
-  width: 100%;
-  border: 0;
-  border-bottom: 2px solid @gray;
-  outline: 0;
-  font-size: 1.3rem;
-  color: #2F3BA2;
-  padding: 7px 0;
-  background: transparent;
-  transition: border-color 0.2s;
-
-  &::placeholder {
-    color: transparent;
-  }
-
-  &:placeholder-shown ~ .form__label {
-    font-size: 1.3rem;
-    cursor: text;
-    top: 0px;
-    left: 5%;
-  }
-}
-
-.form__label {
-  position: absolute;
-  top: 0;
-  display: block;
-  transition: 0.2s;
-  font-size: 1rem;
-  color: @gray;
-}
-
-.form__field:focus {
-  ~ .form__label {
-    position: absolute;
-    top: 0;
-    display: block;
-    transition: 0.2s;
-    font-size: 1rem;
-    color: @primary;
-    font-weight:700;
-  }
-  padding-bottom: 6px;
-  font-weight: 700;
-  border-width: 3px;
-  border-image: linear-gradient(to right, @primary,@secondary);
-  border-image-slice: 1;
-}
-
-
 
 .landing-page-container {
   background-color: #141430;
@@ -110,6 +56,57 @@ body {
     height: 50px;
     margin-top: 8%;
   }
+  .form__group {
+    position: relative;
+    padding: 10px 0 0;
+    width: 100%;
+    margin: 15px 0;
+  }
+  .form__field {
+    font-family: inherit;
+    width: 100%;
+    border: 0;
+    border-bottom: 2px solid @gray;
+    outline: 0;
+    font-size: 1.3rem;
+    color: #2F3BA2;
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+    &::placeholder {
+      color: transparent;
+    }
+    &:placeholder-shown ~ .form__label {
+      font-size: 1.3rem;
+      cursor: text;
+      top: 0px;
+      left: 5%;
+    }
+  }
+  .form__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1rem;
+    color: @gray;
+  }
+  .form__field:focus {
+    ~ .form__label {
+      position: absolute;
+      top: 0;
+      display: block;
+      transition: 0.2s;
+      font-size: 1rem;
+      color: @primary;
+      font-weight:700;
+    }
+    padding-bottom: 6px;
+    font-weight: 700;
+    border-width: 3px;
+    border-image: linear-gradient(to right, @primary,@secondary);
+    border-image-slice: 1;
+  }
 }
 
 .header-container {
@@ -119,15 +116,22 @@ body {
   justify-content: space-between;
   .anticon {
     color: white;
-    font-size: 50px;
-    margin: 5px 0 5px 0;
+    font-size: 30px;
+    margin: 10px;
+  }
+  img {
+    height: 30px;
+    position: relative;
+    top: 5px;
   }
 }
 
-.header-container img {
-  height: 30px;
-  position: relative;
-  top: 5px;
+.dashboard-container {
+  height: 100vh;
+  background-color: #141430;
+  .ant-card {
+    margin: 10px;
+  }
 }
 
 /* Generic styles */
