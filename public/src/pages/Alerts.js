@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import { extractGroupResults } from '../utils/utils.js';
-
+import Header from '../components/Header.js';
 class Alerts extends React.Component {
 
   componentWillMount () {
@@ -50,10 +50,13 @@ class Alerts extends React.Component {
   render () {
     const { alerts } = this.props.alerts;
     return (
-      <div class="alerts-container">
-        { alerts.map(function(alert, index){
-          return <li key={ index }>{alert.title}</li>;
-        })}
+      <div>
+        <Header/>
+        <div class="alerts-container">
+          { alerts.map(function(alert, index){
+            return <li key={ index }>{alert.title}</li>;
+          })}
+        </div>
       </div>
     );
   }

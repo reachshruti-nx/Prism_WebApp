@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import { extractGroupResults } from '../utils/utils.js';
+import Header from '../components/Header.js';
 
 class Tasks extends React.Component {
 
@@ -43,10 +44,13 @@ class Tasks extends React.Component {
   render () {
     const { tasks } = this.props.tasks;
     return (
-      <div class="alerts-container">
-        { tasks.map(function(task, index){
-          return <li key={ index }>{task.display_name}</li>;
-        })}
+      <div>
+        <Header/>
+        <div class="alerts-container">
+          { tasks.map(function(task, index){
+            return <li key={ index }>{task.display_name}</li>;
+          })}
+        </div>
       </div>
     );
   }

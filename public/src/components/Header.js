@@ -1,6 +1,6 @@
 import React from 'react';
 import { Icon, Drawer } from 'antd';
-
+import {hashHistory} from 'react-router';
 export default class Header extends React.Component {
 
   constructor(props) {
@@ -22,6 +22,14 @@ export default class Header extends React.Component {
     });
   };
 
+  openTasksPage = () => {
+    hashHistory.push("/tasks");
+  }
+
+  openAlertsPage = () => {
+    hashHistory.push("/alerts");
+  }
+
   render () {
     return (
       <div>
@@ -32,9 +40,8 @@ export default class Header extends React.Component {
           closable={ false }
           onClose={ this.onClose }
         >
-          <p>Tasks</p>
-          <p>Alerts</p>
-          <p>What else?</p>
+          <div class="menu-item" onClick={this.openTasksPage} > Tasks </div>
+          <div class="menu-item" onClick={this.openAlertsPage} > Alerts </div>
         </Drawer>
         <div class="header-container">
           <Icon type="menu" onClick={this.showDrawer} />

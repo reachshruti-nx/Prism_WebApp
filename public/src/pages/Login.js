@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input, Button } from 'antd';
+import { Button } from 'antd';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import {hashHistory} from 'react-router';
