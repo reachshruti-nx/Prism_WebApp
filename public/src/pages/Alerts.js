@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import { extractGroupResults } from '../utils/utils.js';
 import Header from '../components/Header.js';
-import { Spin } from 'antd';
+import { Spin, Card } from 'antd';
 class Alerts extends React.Component {
 
   constructor(props) {
@@ -62,14 +62,20 @@ class Alerts extends React.Component {
       <Spin size="large" spinning={this.state.loading}>
         <div>
           <Header/>
-          <div class="alerts-container">
-            { alerts.map(function(alert, index){
-              return <li key={ index }>{alert.title}</li>;
+          <div class="alerts-tasks-container">
+            { alerts.map(function(alert){
+              // TO DO : compute the alert title
+              const title = alert.title;
+              return (
+                <Card size="small">
+                  <p>{ title }</p>
+                  {/* TO DO */}
+                  <a href="#">Click to know more</a>
+              </Card>);
             })}
           </div>
         </div>
       </Spin>
-    
     );
   }
 }
