@@ -9,25 +9,18 @@ class Tasks extends React.Component {
     // Make API Call to fetch alerts using groups call
     const url = "/api/nutanix/v3/groups";
     const query = {
-        "entity_type":"alerts",
+        "entity_type":"task",
         "group_attributes":[],
         "group_member_count":40,
         "group_member_offset":0,
         "group_member_sort_attribute":"_created_timestamp_usecs_",
         "group_member_sort_order":"DESCENDING",
         "group_member_attributes":[
-          {"attribute":"title"}, {"attribute":"source_entity_name"},
-          {"attribute":"primary_impact_type"},{"attribute":"severity"},
-          {"attribute":"status"},{"attribute":"_created_timestamp_usecs_"},
-          {"attribute":"last_occurred_timestamp_usecs"},{"attribute":"cluster"},
-          {"attribute":"default_message"},{"attribute":"param_name_list"},
-          {"attribute":"param_value_list"},{"attribute":"auto_resolved"},
-          {"attribute":"acknowledged"},{"attribute":"acknowledging_user"},
-          {"attribute":"acknowledged_timestamp_usecs"},{"attribute":"resolved"},
-          {"attribute":"resolving_user"},{"attribute":"resolved_timestamp_usecs"},
-          {"attribute":"source_entity_uuid"},{"attribute":"source_entity_type"},
-          {"attribute":"impact_type"}],
-        "filter_criteria":"severity==critical;resolved==false"};
+          {"attribute":"display_name"}, {"attribute":"percentage_complete"},
+          {"attribute":"message"},{"attribute":"_created_timestamp_usecs_"},
+          {"attribute":"entity_list"}
+        ]
+    };
     axios.post(url,query, {
       auth: {
           username: this.props.username,
@@ -52,7 +45,7 @@ class Tasks extends React.Component {
     return (
       <div class="alerts-container">
         { tasks.map(function(task, index){
-          return <li key={ index }>{task.title}</li>;
+          return <li key={ index }>{task.display_name}</li>;
         })}
       </div>
     );
