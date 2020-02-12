@@ -49,7 +49,7 @@ const PollAlerts = 5000;
  */
 function startServer() {
   const app = express();
-  const port = 3010;
+  const port = 8000;
 
   app.use(bodyParser.json());
   // app.use(poller);
@@ -93,19 +93,19 @@ function startServer() {
   app.use(express.static('public'));
 
   // Start the server
-  // return   https.createServer({
-  //   key: fs.readFileSync('server.key'),
-  //   cert: fs.readFileSync('server.cert')
-  // }, app).listen('8000', () => {
+  return   https.createServer({
+    key: fs.readFileSync('server.key'),
+    cert: fs.readFileSync('server.cert')
+  }, app).listen(port, () => {
+    // eslint-disable-next-line no-console
+    console.log('Local DevServer Started on port :'+port);
+  });
+
+  // return app.listen('8000', () => {
+  //   getAlerts();
   //   // eslint-disable-next-line no-console
   //   console.log('Local DevServer Started on port 8000...');
   // });
-
-  return app.listen('8000', () => {
-    getAlerts();
-    // eslint-disable-next-line no-console
-    console.log('Local DevServer Started on port 8000...');
-  });
 
 }
 
