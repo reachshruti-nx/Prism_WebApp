@@ -68,21 +68,16 @@ class Login extends React.Component {
     return (
       <div class="login-container">
         <div style={{ "textAlign": "center", "marginBottom": "50px" }}>
-          <img src="/images/n-logo-white.png" alt="Nutanix Logo" />
+          <img src="/images/prism.png" alt="Nutanix Logo" />
         </div>
-        <div id="pcip" class="form__group field">
-          <input type="input" class="form__field" placeholder="PC IP" name="pcip" required />
-          <label for="name" class="form__label">PC IP</label>
+
+        <div class="field">
+          <input id="username" type="input" class="" placeholder="Username" name="username" required />
         </div>
-        <div class="form__group field">
-          <input id="username" type="input" class="form__field" placeholder="Username" name="username" required />
-          <label for="name" class="form__label">Username</label>
+        <div class="field">
+          <input id="password" type="input" class="" placeholder="Password" name="password" required />
         </div>
-        <div class="form__group field">
-          <input id="password" type="input" class="form__field" placeholder="Password" name="password" required />
-          <label for="name" class="form__label">Password</label>
-        </div>
-        <div>
+        <div class="field">
           <Button
             class="login-button"
             type="primary"
@@ -92,7 +87,7 @@ class Login extends React.Component {
           </Button>
         </div>
           <div class="footer" style={{ "color":"#fff" }}>
-          <h5 style={{ "color": "#5a5ade", "fontWeight": "600" }}>
+          <h5 style={{ "color": "#fff", "fontWeight": "100" }}>
             Powered by:
           </h5>
           <div>
