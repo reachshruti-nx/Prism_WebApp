@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import { extractGroupResults } from '../utils/utils.js';
 import Header from '../components/Header.js';
-import { Spin, Collapse } from 'antd';
+import { Spin, Collapse, Descriptions } from 'antd';
 class Alerts extends React.Component {
 
   constructor(props) {
@@ -69,39 +69,14 @@ class Alerts extends React.Component {
               const title = alert.title;
               return (
               <Panel header={ title } key={index}>
-                <div>
-                  Impact Type: { alert.impact_type }
-                  Source Entity : { alert.source_entity_name }
-                  Created Time: { alert._created_timestamp_usecs_}
-                  Last occured Time: { alert.last_occurred_timestamp_usecs}
-                </div>
-                <Descriptions title="User Info" bordered>
-                  <Descriptions.Item label="Product">Cloud Database</Descriptions.Item>
-                  <Descriptions.Item label="Billing Mode">Prepaid</Descriptions.Item>
-                  <Descriptions.Item label="Automatic Renewal">YES</Descriptions.Item>
-                  <Descriptions.Item label="Order time">2018-04-24 18:00:00</Descriptions.Item>
-                  <Descriptions.Item label="Usage Time" span={2}>
-                    2019-04-24 18:00:00
-                  </Descriptions.Item>
-                  <Descriptions.Item label="Status" span={3}>
-                    <Badge status="processing" text="Running" />
-                  </Descriptions.Item>
-                  <Descriptions.Item label="Negotiated Amount">$80.00</Descriptions.Item>
-                  <Descriptions.Item label="Discount">$20.00</Descriptions.Item>
-                  <Descriptions.Item label="Official Receipts">$60.00</Descriptions.Item>
-                  <Descriptions.Item label="Config Info">
-                    Data disk type: MongoDB
-                    <br />
-                    Database version: 3.4
-                    <br />
-                    Package: dds.mongo.mid
-                    <br />
-                    Storage space: 10 GB
-                    <br />
-                    Replication factor: 3
-                    <br />
-                    Region: East China 1<br />
-                  </Descriptions.Item>
+                <Descriptions
+                  bordered
+                  column={{ xxl: 4, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }}
+                >
+                  <Descriptions.Item label="Impact Type">{ alert.impact_type }</Descriptions.Item>
+                  <Descriptions.Item label="Source Entity">{ alert.source_entity_name }</Descriptions.Item>
+                  {/* <Descriptions.Item label="Created Time">{ alert._created_timestamp_usecs_}</Descriptions.Item> */}
+                  {/* <Descriptions.Item label="Last occured Time">{ alert.last_occurred_timestamp_usecs}</Descriptions.Item> */}
                 </Descriptions>
               </Panel>
               );
