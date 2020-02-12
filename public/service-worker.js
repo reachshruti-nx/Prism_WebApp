@@ -17,37 +17,16 @@
  */
 'use strict';
 // CODELAB: Update cache names any time any of the cached files change.
-const CACHE_NAME = 'static-cache-v5';
+const CACHE_NAME = 'static-cache-v11';
 const DATA_CACHE_NAME = 'data-cache-v1';
 // CODELAB: Add list of files to cache here.
 const FILES_TO_CACHE = [
-  '/',
-  '/index.html',
-  '/scripts/app.js',
-  '/scripts/install.js',
-  '/scripts/luxon-1.11.4.js',
-  '/styles/inline.css',
-  '/images/add.svg',
-  '/images/clear-day.svg',
-  '/images/clear-night.svg',
-  '/images/cloudy.svg',
-  '/images/fog.svg',
-  '/images/hail.svg',
-  '/images/install.svg',
-  '/images/partly-cloudy-day.svg',
-  '/images/partly-cloudy-night.svg',
-  '/images/rain.svg',
-  '/images/refresh.svg',
-  '/images/sleet.svg',
-  '/images/snow.svg',
-  '/images/thunderstorm.svg',
-  '/images/tornado.svg',
-  '/images/wind.svg',
+  'offline.html',
 ];
 self.addEventListener('install', (evt) => {
   console.log('[ServiceWorker] Install');
   // CODELAB: Precache static resources here.
-  evt.waitUtil(
+  evt.waitUntil(
     caches.open(CACHE_NAME).then(cache => {
       console.log('[ServiceWorker] Pre-caching offline page');
       return cache.addAll(FILES_TO_CACHE);
@@ -90,22 +69,22 @@ self.addEventListener('fetch', (evt) => {
     }));
     return;
   }
-  evt.respondWith(caches.open(CACHE_NAME).then(cache => {
-    return cache.match(evt.request)
-      .then(response => {
-        return response || fetch(evt.request);
-      });
-  }));
-  // if (evt.request.mode !== 'navigate') {
-  //   // Not a page navigation url
-  //   return;
-  // }
-  // evt.respondWith(
-  //   fetch(evt.request)
-  //     .catch(() => {
-  //       return caches.open(CACHE_NAME).then(cache => {
-  //         return cache.match('offline.html');
-  //       });
-  //     })
-  // );
+  // evt.respondWith(caches.open(CACHE_NAME).then(cache => {
+  //   return cache.match(evt.request)
+  //     .then(response => {
+  //       return response || fetch(evt.request);
+  //     });
+  // }));
+  if (evt.request.mode !== 'navigate') {
+    // Not a page navigation url
+    return;
+  }
+  evt.respondWith(
+    fetch(evt.request)
+      .catch(() => {
+        return caches.open(CACHE_NAME).then(cache => {
+          return cache.match('offline.html');
+        });
+      })
+  );
 });
