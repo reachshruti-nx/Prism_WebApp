@@ -17,12 +17,21 @@
  * limitations under the License
  */
 'use strict';
-
+require('dotenv').config({ path: 'variables.env' });
 const express = require('express');
 const fetch = require('node-fetch');
 var fs = require('fs');
 var https = require('https');
 var proxy = require('http-proxy-middleware');
+
+const webPush = require('web-push');
+const bodyParser = require('body-parser');
+
+const publicVapidKey = process.env.PUBLIC_VAPID_KEY;
+const privateVapidKey = process.env.PRIVATE_VAPID_KEY;
+
+webPush.setVapidDetails('mailto:abhinav.kareer@nutanix.com', publicVapidKey, privateVapidKey);
+
 const redirectToHTTPS = require('express-http-to-https').redirectToHTTPS;
 
 // CODELAB: Change this to add a delay (ms) before the server responds.
@@ -178,7 +187,7 @@ function startServer() {
     logLevel:'debug'
    })
   );
-
+  app.use(bodyParser.json());
   // Logging for each request
   app.use((req, resp, next) => {
     const now = new Date();
@@ -194,17 +203,34 @@ function startServer() {
   app.get('/forecast/', getForecast);
   app.get('/forecast', getForecast);
 
+  app.post('/subscribe', (req, res) => {
+    const subscription = req.body
+
+    res.status(201).json({});
+
+    const payload = JSON.stringify({
+      title: 'Push notifications with Service Workers',
+    });
+
+    webPush.sendNotification(subscription, payload)
+      .catch(error => console.error(error));
+  });
+
   // Handle requests for static files
   app.use(express.static('public'));
 
-  // Start the server
-  return   https.createServer({
-    key: fs.readFileSync('server.key'),
-    cert: fs.readFileSync('server.cert')
-  }, app).listen('8000', () => {
-    // eslint-disable-next-line no-console
-    console.log('Local DevServer Started on port 8000...');
-  });
+  // // Start the server
+  // return   https.createServer({
+  //   key: fs.readFileSync('server.key'),
+  //   cert: fs.readFileSync('server.cert')
+  // }, app).listen('8000', () => {
+  //   // eslint-disable-next-line no-console
+  //   console.log('Local DevServer Started on port 8000...');
+  // });
+   return app.listen('8000', () => {
+      // eslint-disable-next-line no-console
+      console.log('Local DevServer Started on port 8000...');
+    });
 
   // app.listen('8000', () => {
   //     // eslint-disable-next-line no-console

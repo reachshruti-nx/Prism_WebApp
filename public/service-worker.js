@@ -70,6 +70,14 @@ self.addEventListener('activate', (evt) => {
   )
   self.clients.claim();
 });
+
+self.addEventListener('push', event => {
+  const data = event.data.json();
+
+  self.registration.showNotification(data.title, {
+    body: 'Yay it works!',
+  });
+});
 self.addEventListener('fetch', (evt) => {
   console.log('[ServiceWorker] Fetch', evt.request.url);
   // CODELAB: Add fetch event handler here.
